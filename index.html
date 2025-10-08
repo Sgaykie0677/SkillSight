@@ -7,44 +7,46 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --blue: #1F3C88; --teal: #00BFA6; --orange: #FF6B35;
-      --gray-100: #F5F6FA; --gray-200: #ECEFF4; --gray-700: #374151; --gray-900: #111827; --white: #FFFFFF;
+      --blue:#1F3C88; --teal:#00BFA6; --orange:#FF6B35;
+      --gray-100:#F5F6FA; --gray-200:#ECEFF4; --gray-700:#374151; --gray-900:#111827; --white:#FFFFFF;
     }
-    body { margin:0; font-family:"Open Sans",sans-serif; color:var(--gray-900); background:var(--white); line-height:1.6; }
-    h1,h2,h3,h4,h5 { font-family:"Montserrat",sans-serif; color:var(--blue); margin:0 0 .5rem; }
-    .container { width:min(1100px,92%); margin:0 auto; }
-    .section { padding:64px 0; }
-    .section.alt { background:var(--gray-100); }
-    .btn { display:inline-block; padding:12px 18px; border-radius:8px; text-decoration:none; font-weight:600; }
-    .btn-primary { background:var(--orange); color:#fff; }
-    .btn-secondary { background:var(--teal); color:#fff; }
+    body{margin:0;font-family:"Open Sans",sans-serif;color:var(--gray-900);background:var(--white);line-height:1.6;}
+    h1,h2,h3,h4{font-family:"Montserrat",sans-serif;color:var(--blue);margin:0 0 .5rem;}
+    .container{width:min(1100px,92%);margin:0 auto;}
+    .section{padding:64px 0;}
+    .section.alt{background:var(--gray-100);}
+    .btn{display:inline-block;padding:12px 18px;border-radius:8px;text-decoration:none;font-weight:600;}
+    .btn-primary{background:var(--orange);color:#fff;}
+    .btn-secondary{background:var(--teal);color:#fff;}
     /* Header */
-    .site-header { position:sticky; top:0; background:#fff; border-bottom:1px solid var(--gray-200); z-index:999; }
-    .header-inner { display:flex; justify-content:space-between; align-items:center; height:72px; }
-    .brand { display:flex; align-items:center; gap:12px; text-decoration:none; }
-    .brand-name { font-weight:700; font-size:1.2rem; color:var(--blue); }
-    .nav-list { list-style:none; display:flex; gap:18px; margin:0; padding:0; }
-    .nav-list a { text-decoration:none; color:var(--gray-900); padding:8px 10px; border-radius:6px; }
-    .nav-list a:hover { background:var(--gray-100); }
-    .cta-link { background:var(--teal); color:#fff; }
-    /* ROI Calculator */
-    .roi-form { display:grid; gap:16px; max-width:500px; margin:20px 0; }
-    .roi-form .form-group { display:flex; flex-direction:column; gap:6px; }
-    .roi-form input { padding:10px; border:1px solid var(--gray-200); border-radius:6px; }
-    .roi-result { margin-top:20px; padding:20px; background:#fff; border:1px solid var(--gray-200); border-radius:8px; }
+    .site-header{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--gray-200);z-index:999;}
+    .header-inner{display:flex;justify-content:space-between;align-items:center;height:72px;}
+    .brand{font-weight:700;font-size:1.2rem;color:var(--blue);text-decoration:none;}
+    .nav-list{list-style:none;display:flex;gap:18px;margin:0;padding:0;}
+    .nav-list a{text-decoration:none;color:var(--gray-900);padding:8px 10px;border-radius:6px;}
+    .nav-list a:hover{background:var(--gray-100);}
+    .cta-link{background:var(--teal);color:#fff;}
+    /* Grids */
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:32px;}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+    .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
     /* Case Studies */
-    .case-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
-    .case { background:#fff; border:1px solid var(--gray-200); border-radius:10px; padding:20px; }
-    .case h3 { margin-top:0; }
+    .case-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
+    .case{background:#fff;border:1px solid var(--gray-200);border-radius:10px;padding:20px;}
+    /* ROI */
+    .roi-form{display:grid;gap:16px;max-width:500px;margin:20px 0;}
+    .roi-form .form-group{display:flex;flex-direction:column;gap:6px;}
+    .roi-form input{padding:10px;border:1px solid var(--gray-200);border-radius:6px;}
+    .roi-result{margin-top:20px;padding:20px;background:#fff;border:1px solid var(--gray-200);border-radius:8px;}
     /* Footer */
-    .site-footer { border-top:1px solid var(--gray-200); padding:20px 0; text-align:center; }
+    .site-footer{border-top:1px solid var(--gray-200);padding:20px 0;text-align:center;}
   </style>
 </head>
 <body>
   <!-- Header -->
   <header class="site-header">
     <div class="container header-inner">
-      <a href="#hero" class="brand"><span class="brand-name">SkillSight</span></a>
+      <a href="#hero" class="brand">SkillSight</a>
       <nav>
         <ul class="nav-list">
           <li><a href="#hero">Home</a></li>
@@ -64,47 +66,57 @@
 
   <!-- Hero -->
   <section id="hero" class="section">
-    <div class="container">
-      <h1>See the skills that matter, faster.</h1>
-      <p>Cut time‑to‑hire by 50–70% with structured video screening that reveals communication, professionalism, and customer‑service skills before the interview.</p>
-      <a href="#pilot" class="btn btn-primary">Start a Pilot</a>
+    <div class="container grid-2">
+      <div>
+        <h1>See the skills that matter, faster.</h1>
+        <p>Cut time‑to‑hire by 50–70% with structured video screening that reveals communication, professionalism, and customer‑service skills before the interview.</p>
+        <a href="#pilot" class="btn btn-primary">Start a Pilot</a>
+      </div>
+      <div>
+        <!-- Placeholder for dashboard mockup -->
+        <div style="background:#fff;border:1px solid var(--gray-200);border-radius:10px;padding:20px;box-shadow:0 8px 20px rgba(31,60,136,.08);">
+          <h3 style="margin:0;color:var(--blue);">Manager Dashboard</h3>
+          <p>Review candidate videos side‑by‑side with resumes.</p>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- Problem -->
   <section id="problem" class="section alt">
-    <div class="container">
-      <h2>The first interview is broken.</h2>
-      <p>Phone screens are slow, inconsistent, and fail to reveal soft skills.</p>
+    <div class="container grid-3">
+      <div><h3>⏱ Slow phone screens</h3><p>Scheduling delays and repetitive calls waste time.</p></div>
+      <div><h3>🧩 Soft skills invisible</h3><p>Resumes don’t reveal communication or service mindset.</p></div>
+      <div><h3>⚖️ Inconsistent evaluation</h3><p>Different questions lead to bias‑prone assessments.</p></div>
     </div>
   </section>
 
   <!-- Solution -->
   <section id="solution" class="section">
-    <div class="container">
-      <h2>The SkillSight Advantage</h2>
-      <p>ATS filter → Structured video interview → Manager dashboard.</p>
+    <div class="container grid-3">
+      <div><h3>🔎 ATS Filter</h3><p>Instantly screen for hard requirements.</p></div>
+      <div><h3>🎥 Structured Video</h3><p>Candidates answer standardized STAR questions.</p></div>
+      <div><h3>📊 Dashboard</h3><p>Review 50 candidates in the time of 5 calls.</p></div>
     </div>
   </section>
 
   <!-- Value -->
   <section id="value" class="section alt">
-    <div class="container">
-      <h2>Why SkillSight Works</h2>
-      <ul>
-        <li>⏱ 50–70% faster time‑to‑hire</li>
-        <li>👥 Better shortlists</li>
-        <li>⚖️ Fair & consistent</li>
-        <li>📈 Scalable</li>
-      </ul>
+    <div class="container grid-4">
+      <div><h3>🚀 Faster</h3><p>50–70% reduction in screening time.</p></div>
+      <div><h3>👥 Better</h3><p>Soft skills visible upfront.</p></div>
+      <div><h3>⚖️ Fairer</h3><p>Standardized STAR questions reduce bias.</p></div>
+      <div><h3>📈 Scalable</h3><p>Handle seasonal peaks without extra staff.</p></div>
     </div>
   </section>
 
   <!-- Industries -->
   <section id="industries" class="section">
-    <div class="container">
-      <h2>Industries We Serve</h2>
-      <p>Retail, Healthcare, Hospitality, Call Centers, Logistics</p>
+    <div class="container grid-4">
+      <div><h3>🛍️ Retail</h3><p>Hire for service and reliability.</p></div>
+      <div><h3>🏥 Healthcare</h3><p>Hire for empathy and clarity.</p></div>
+      <div><h3>🏨 Hospitality</h3><p>Hire for warmth and professionalism.</p></div>
+      <div><h3>📞 Call Centers</h3><p>Hire for tone and problem‑solving.</p></div>
     </div>
   </section>
 
@@ -118,48 +130,11 @@
 
   <!-- How It Works -->
   <section id="how" class="section">
-    <div class="container">
-      <h2>How It Works</h2>
-      <p>Candidates record STAR responses; managers review quickly in dashboard.</p>
+    <div class="container grid-2">
+      <div><h3>For Candidates</h3><p>Record STAR responses on your own time.</p></div>
+      <div><h3>For Employers</h3><p>Managers review quickly with side‑by‑side video and resume.</p></div>
     </div>
   </section>
 
   <!-- Case Studies -->
-  <section id="case" class="section alt">
-    <div class="container">
-      <h2>Case Studies</h2>
-      <div class="case-grid">
-        <div class="case">
-          <h3>Retail Pilot</h3>
-          <p><strong>Challenge:</strong> High turnover, slow phone screens.</p>
-          <p><strong>Solution:</strong> Structured video interviews.</p>
-          <p><strong>Results:</strong> 55% faster time‑to‑hire, 90% manager satisfaction.</p>
-        </div>
-        <div class="case">
-          <h3>Healthcare Pilot</h3>
-          <p><strong>Challenge:</strong> Screening pharmacy techs fairly.</p>
-          <p><strong>Solution:</strong> STAR questions, video dashboard.</p>
-          <p><strong>Results:</strong> 60% faster screening, higher candidate completion.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ROI Calculator -->
-  <section id="roi" class="section">
-    <div class="container">
-      <h2>Calculate Your ROI</h2>
-      <form id="roiForm" class="roi-form">
-        <div class="form-group">
-          <label for="candidates">Candidates per month</label>
-          <input type="number" id="candidates" value="200" required />
-        </div>
-        <div class="form-group">
-          <label for="timePerScreen">Minutes per phone screen</label>
-          <input type="number" id="timePerScreen" value="30" required />
-        </div>
-        <div class="form-group">
-          <label for="hourlyRate">Recruiter hourly rate ($)</label>
-          <input type="number" id="hourlyRate" value="35" required />
-        </div>
-        <button type="submit" class="btn btn-primary">Calculate Savings
+ 
