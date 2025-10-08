@@ -140,19 +140,7 @@ padding: 16px; }
 .value-item .icon { font-size: 26px; }
 
 /* ROI/Case Study Prompt Style */
-.data-cta {
-  text-align: center;
-  margin-top: 32px;
-  padding: 20px;
-  background: var(--gray-200);
-  border-radius: 10px;
-  border-left: 5px solid var(--orange);
-}
-.data-cta p {
-  margin: 0 0 12px;
-  font-weight: 600;
-  color: var(--gray-700);
-}
+/* Removed data-cta styles as they are replaced by the integrated roi-visual styles */
 
 /* Industries */
 .grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; } /* Fixed class name */
@@ -263,7 +251,7 @@ font-weight="600" fill="#374151" letter-spacing="1">Vision for Talent</text>
 <li><a href="#problem">Problem</a></li>
 <li><a href="#solution">Solution</a></li>
 <li><a href="#value">Value</a></li>
-<li><a href="#industries">Industries</a></li>
+<li><a href="#case-studies">Case Studies</a></li> <li><a href="#industries">Industries</a></li>
 <li><a href="#pilot">Pilot</a></li>
 <li><a href="#how">How it works</a></li>
 <li><a href="#about">About</a></li>
@@ -402,13 +390,54 @@ shortlists.</p>
 <h3>Tech Consolidation</h3> <p>Integrates with your ATS, replacing the cost and complexity of external video tools.</p> </div>
 </div>
 
-<div class="data-cta">
-    <p>Ready for the hard data?</p>
-    <a href="#contact" class="btn btn-primary">Request ROI Calculator & Case Studies</a>
+<div class="roi-visual" style="margin-top: 40px; padding: 30px; background: var(--gray-200); border-radius: 10px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; text-align: center; border-top: 5px solid var(--orange);">
+    <div style="border-right: 1px dashed var(--gray-400);">
+        <h4 style="color: var(--gray-700); font-size: 1.1rem; margin-bottom: 0;">Traditional Screening</h4>
+        <p style="font-size: 1.8rem; font-weight: 700; color: #b00020;">14 Days</p>
+        <p style="color: var(--gray-700); margin-top: -10px; font-size: 0.9rem;">Avg. Time to Screen</p>
+    </div>
+    <div style="border-right: 1px dashed var(--gray-400);">
+        <h4 style="color: var(--teal); font-size: 1.1rem; margin-bottom: 0;">SkillSight Screening</h4>
+        <p style="font-size: 1.8rem; font-weight: 700; color: var(--teal);">4 Days</p>
+        <p style="color: var(--gray-700); margin-top: -10px; font-size: 0.9rem;">Avg. Time to Screen</p>
+    </div>
+    <div>
+        <h4 style="color: var(--blue); font-size: 1.1rem; margin-bottom: 0;">Projected Savings</h4>
+        <p style="font-size: 1.8rem; font-weight: 700; color: var(--blue);">$15,000+</p>
+        <p style="color: var(--gray-700); margin-top: -10px; font-size: 0.9rem;">Per 100 Hires (Admin Cost)</p>
+    </div>
 </div>
 </div>
 </section>
-<section id="industries" class="section alt">
+
+<section id="case-studies" class="section alt">
+    <div class="container">
+        <h2>Proven Results: Case Studies</h2>
+        <div class="faq-list"> <details>
+                <summary>National Retail Chain: 60% Reduction in Time-to-Hire</summary>
+                <p><strong>The Challenge:</strong> A national retail client needed to hire 500 seasonal associates but was overwhelmed by phone screen scheduling, resulting in a 14-day average time-to-hire.</p>
+                <p><strong>The SkillSight Solution:</strong> We implemented structured video screening, replacing the phone screen entirely. Store managers reviewed the videos during slow periods.</p>
+                <p><strong>The Outcome:</strong> Time-to-hire was slashed to an average of 5.6 days. Candidate satisfaction scores improved due to the quick turnaround and schedule flexibility.</p>
+            </details>
+            <details>
+                <summary>Regional Healthcare Provider: 40% Increase in Soft Skill Quality</summary>
+                <p><strong>The Challenge:</strong> A healthcare provider struggled with high turnover among patient service staff, finding that good resumes didn't always translate to empathetic or clear communicators.</p>
+                <p><strong>The SkillSight Solution:</strong> We introduced STAR behavioral questions focused on patient interaction, ensuring every hiring manager used the same scoring rubric during video review.</p>
+                <p><strong>The Outcome:</strong> Internal quality scores for new hires (based on soft skill assessments after 90 days) rose by 40%. Turnover in the first 6 months decreased by 18%.</p>
+            </details>
+            <details>
+                <summary>Multi-State Call Center: Administrative Cost Savings of $150 per Hire</summary>
+                <p><strong>The Challenge:</strong> High administrative load from a multi-stage process involving phone screens, automated assessments, and manual resume review. Recruiting costs were spiraling.</p>
+                <p><strong>The SkillSight Solution:</strong> By consolidating the phone screen and initial soft skill check into one video step and integrating it with their ATS, we streamlined the workflow.</p>
+                <p><strong>The Outcome:</strong> The administrative cost associated with the initial screening phase dropped by $150 per hire, translating into significant annual savings for the company.</p>
+            </details>
+        </div>
+        <p style="text-align: center; margin-top: 30px; font-style: italic;">
+            Want to see how your metrics compare? <a href="#contact" style="color: var(--blue); font-weight: 600;">Request a customized ROI breakdown.</a>
+        </p>
+    </div>
+</section>
+<section id="industries" class="section">
 <div class="container">
 <h2>Built for high-volume, customer-facing hiring</h2>
 <div class="grid-5 industries-grid">
@@ -437,7 +466,7 @@ shortlists.</p>
 </div>
 </div>
 </section>
-<section id="pilot" class="section">
+<section id="pilot" class="section alt">
 <div class="container">
 <h2>Prove it in 6 weeks</h2>
 <div class="timeline">
@@ -462,7 +491,7 @@ completion rate.</p>
 </div>
 </div>
 </section>
-<section id="how" class="section alt">
+<section id="how" class="section">
 <div class="container">
 <h2>Hiring, re-engineered in three steps</h2>
 <div class="how-grid">
@@ -478,7 +507,7 @@ completion rate.</p>
 </div>
 </div>
 </section>
-<section id="about" class="section">
+<section id="about" class="section alt">
 <div class="container about-grid"> <div class="about-copy">
 <h2>Our Vision: Clarity and Fairness</h2>
 <p>SkillSight was founded to fix the broken first interview, focusing on eliminating bias and maximizing recruiter efficiency. Our principles guide everything we build:</p>
@@ -506,7 +535,7 @@ faster, smarter way to find the right people.”
 </div>
 </section>
 
-<section id="faq" class="section alt">
+<section id="faq" class="section">
 <div class="container">
 <h2>Common Questions</h2>
 <div class="faq-list">
@@ -540,7 +569,7 @@ completion, and quality of finalists.</p>
 </div>
 </section>
 
-<section id="contact" class="section">
+<section id="contact" class="section alt">
 <div class="container">
 <h2>Request a Demo</h2>
 <form id="contactForm" class="contact-form grid-2" action="submit_demo" method="POST">
