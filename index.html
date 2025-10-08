@@ -38,14 +38,6 @@
     .mockup{border:1px solid var(--gray-200);border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 8px 20px rgba(31,60,136,.08);}
     .mockup-header{background:var(--blue);color:#fff;padding:10px 14px;font-weight:600;}
     .mockup-body{padding:20px;}
-    /* Case Studies */
-    .case-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
-    .case{background:#fff;border:1px solid var(--gray-200);border-radius:10px;padding:20px;}
-    /* ROI */
-    .roi-form{display:grid;gap:16px;max-width:500px;margin:20px 0;}
-    .roi-form .form-group{display:flex;flex-direction:column;gap:6px;}
-    .roi-form input{padding:10px;border:1px solid var(--gray-200);border-radius:6px;}
-    .roi-result{margin-top:20px;padding:20px;background:#fff;border:1px solid var(--gray-200);border-radius:8px;}
     /* Footer */
     .site-footer{border-top:1px solid var(--gray-200);padding:20px 0;text-align:center;}
   </style>
@@ -55,7 +47,7 @@
   <header class="site-header">
     <div class="container header-inner">
       <a href="#hero" class="brand">
-        <!-- Replace inline SVG with <img src="assets/logo.svg" class="logo" alt="SkillSight logo"> if you have a file -->
+        <!-- Replace with your exported logo.svg/png if available -->
         <svg class="logo" viewBox="0 0 200 50" xmlns="http://www.w3.org/2000/svg">
           <text x="0" y="30" font-family="Montserrat" font-size="24" font-weight="700" fill="#1F3C88">SkillSight</text>
         </svg>
@@ -73,8 +65,6 @@
           <li><a href="#industries">Industries</a></li>
           <li><a href="#pilot">Pilot</a></li>
           <li><a href="#how">How It Works</a></li>
-          <li><a href="#case">Case Studies</a></li>
-          <li><a href="#roi">ROI Calculator</a></li>
           <li><a href="#contact" class="cta-link">Request Demo</a></li>
         </ul>
       </nav>
@@ -123,4 +113,29 @@
       <div><h3>🚀 Faster</h3><p>50–70% reduction in screening time.</p></div>
       <div><h3>👥 Better</h3><p>Soft skills visible upfront.</p></div>
       <div><h3>⚖️ Fairer</h3><p>Standardized STAR questions reduce bias.</p></div>
-      <div><h3>📈 Scalable
+      <div><h3>📈 Scalable</h3><p>Handle seasonal peaks without extra staff.</p></div>
+    </div>
+  </section>
+
+  <!-- Industries -->
+  <section id="industries" class="section">
+    <div class="container grid-4">
+      <div><h3>🛍️ Retail</h3><p>Hire for service and reliability.</p></div>
+      <div><h3>🏥 Healthcare</h3><p>Hire for empathy and clarity.</p></div>
+      <div><h3>🏨 Hospitality</h3><p>Hire for warmth and professionalism.</p></div>
+      <div><h3>📞 Call Centers</h3><p>Hire for tone and problem‑solving.</p></div>
+    </div>
+  </section>
+
+  <!-- Pilot -->
+  <section id="pilot" class="section alt">
+    <div class="container">
+      <h2>Prove it in 6 weeks</h2>
+      <p>Run a pilot in 5–10 locations, measure ROI, and scale.</p>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section id="how" class="section">
+    <div class="container grid-2">
+      <div><h3>For
