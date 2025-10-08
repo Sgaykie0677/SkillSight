@@ -1,141 +1,662 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SkillSight – See the skills that matter, faster.</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --blue:#1F3C88; --teal:#00BFA6; --orange:#FF6B35;
-      --gray-100:#F5F6FA; --gray-200:#ECEFF4; --gray-700:#374151; --gray-900:#111827; --white:#FFFFFF;
-    }
-    body{margin:0;font-family:"Open Sans",sans-serif;color:var(--gray-900);background:var(--white);line-height:1.6;}
-    h1,h2,h3,h4{font-family:"Montserrat",sans-serif;color:var(--blue);margin:0 0 .5rem;}
-    .container{width:min(1100px,92%);margin:0 auto;}
-    .section{padding:64px 0;}
-    .section.alt{background:var(--gray-100);}
-    .btn{display:inline-block;padding:12px 18px;border-radius:8px;text-decoration:none;font-weight:600;}
-    .btn-primary{background:var(--orange);color:#fff;}
-    .btn-secondary{background:var(--teal);color:#fff;}
-    /* Header */
-    .site-header{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--gray-200);z-index:999;}
-    .header-inner{display:flex;justify-content:space-between;align-items:center;height:72px;}
-    .brand{display:flex;align-items:center;gap:10px;text-decoration:none;}
-    .logo{height:40px;width:auto;}
-    .brand-text{display:flex;flex-direction:column;line-height:1;}
-    .brand-name{font-weight:700;font-size:1.2rem;color:var(--blue);}
-    .brand-tag{font-size:0.75rem;color:var(--gray-700);}
-    .nav-list{list-style:none;display:flex;gap:18px;margin:0;padding:0;}
-    .nav-list a{text-decoration:none;color:var(--gray-900);padding:8px 10px;border-radius:6px;}
-    .nav-list a:hover{background:var(--gray-100);}
-    .cta-link{background:var(--teal);color:#fff;}
-    /* Grids */
-    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:32px;}
-    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
-    .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
-    /* Hero mockup */
-    .mockup{border:1px solid var(--gray-200);border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 8px 20px rgba(31,60,136,.08);}
-    .mockup-header{background:var(--blue);color:#fff;padding:10px 14px;font-weight:600;}
-    .mockup-body{padding:20px;}
-    /* Footer */
-    .site-footer{border-top:1px solid var(--gray-200);padding:20px 0;text-align:center;}
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SkillSight - See the skills that matter, faster.</title>
+<meta name="description" content="Cut time-to-hire by 50-70% with structured video
+screening that reveals soft skills upfront and consolidates HR Tech." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+href="https://fonts.googleapis.com/css?family=Montserrat:wght@600;700&family=Open+Sans:
+wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+--blue: #1F3C88;
+--teal: #00BFA6;
+--orange: #FF6B35;
+--gray-100: #F5F6FA;
+--gray-200: #ECEFF4;
+--gray-400: #9CA3AF;
+--gray-700: #374151;
+--gray-900: #111827;
+--white: #FFFFFF;
+}
+*{box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+margin: 0;
+font-family: "Open Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+color: var(--gray-900);
+background: var(--white);
+line-height: 1.6;
+}
+h1, h2, h3, h4, h5, h6 {
+font-family: "Montserrat", "Open Sans", Arial, sans-serif;
+margin: 0 0 0.5rem; /* Adjusted margin for better flow */
+color: var(--blue);
+}
+.lead { font-size: 1.1rem; color: var(--gray-700); }
+.container { width: min(1100px, 92%); margin: 0 auto; } /* Fixed min( ) syntax */
+.section { padding: 64px 0; background: var(--white); }
+.section.alt { background: var(--gray-100); }
+
+.btn {
+display: inline-block; padding: 12px 18px; border-radius: 8px;
+text-decoration: none; font-weight: 600;
+}
+.btn-primary { background: var(--orange); color: var(--white); }
+.btn-secondary { background: var(--teal); color: var(--white); }
+.btn-mini {
+background: var(--blue); color: var(--white);
+padding: 8px 12px; border: none; border-radius: 6px; cursor: pointer; font-size: 0.85rem;
+}
+/* Header */
+.site-header {
+position: sticky; top: 0; z-index: 999;
+background: var(--white); border-bottom: 1px solid var(--gray-200);
+.header-inner { display: flex; align-items: center; justify-content: space-between; height: 72px;
+}
+}
+.brand { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+.brand-name { color: var(--blue); font-weight: 700; font-size: 1.2rem; }
+.nav-list {
+display: flex; gap: 18px; align-items: center; list-style: none; margin: 0; padding: 0;
+}
+.nav-list a { text-decoration: none; color: var(--gray-900); padding: 8px 10px; border-radius:
+6px; }
+.nav-list a:hover { background: var(--gray-100); }
+.cta-link { background: var(--teal); color: var(--white); }
+.nav-toggle { display: none; background: none; border: none; font-size: 24px; cursor: pointer; }
+/* Inline Logo */
+.logo-wrap { display: flex; align-items: center; gap: 12px; } /* Fixed class name */
+.logo-svg { height: 36px; width: auto; display: block; }
+.logo-tag { font-size: 0.8rem; color: var(--gray-700); letter-spacing: 0.6px; }
+/* Hero */
+.hero { padding-top: 40px; }
+.grid-2 { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 32px; } /* Fixed class name */
+.hero-actions { display: flex; gap: 12px; margin: 16px 0; }
+.proof-points { list-style: none; padding: 0; margin: 12px 0 0; color: var(--gray-700); }
+.proof-points li { margin-bottom: 6px; }
+/* Dashboard mockup */
+.mockup {
+border: 1px solid var(--gray-200);
+border-radius: 12px; overflow: hidden; background: var(--white);
+box-shadow: 0 8px 20px rgba(31, 60, 136, .08);
+}
+.mockup-header {
+background: var(--blue); color: var(--white);
+padding: 10px 14px; display: flex; align-items: center; gap: 8px;
+}
+.mockup-header .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+.dot.red { background: #ff5f56; }
+.dot.yellow { background: #ffbd2e; }
+.dot.green { background: #27c93f; }
+.mockup-header .title { margin-left: auto; font-weight: 600; }
+.mockup-body { display: grid; grid-template-columns: 220px 1fr; }
+.filters { padding: 14px; border-right: 1px solid var(--gray-200); background: var(--gray-100); }
+.filters h4 { margin: 0 0 10px; color: var(--blue); }
+.filters label { display: block; margin-bottom: 8px; color: var(--gray-700); }
+.cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; padding: 14px; }
+.card { border: 1px solid var(--gray-200); border-radius: 10px;
+padding: 12px; background:
+var(--white); }
+.card .thumb {
+  /* Added styles to make the video mockup more visually descriptive */
+  background: var(--gray-700);
+  height: 60px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  font-size: 16px;
+}
+.card .thumb::after {
+  content: '▶'; /* Play icon */
+  font-size: 24px;
+  position: absolute;
+  opacity: 0.8;
+}
+
+/* Features & Steps */
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; } /* Fixed class name */
+.feature .icon { font-size: 28px; }
+.steps {
+display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; align-items: center; gap: 18px;
+margin-top: 16px;
+}
+.step { background: var(--white); padding: 16px; border: 1px solid var(--gray-200);
+border-radius: 10px; text-align: center; }
+.step-icon { font-size: 28px; }
+.connector { height: 2px; background: var(--teal); }
+/* Value */
+.value-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.value-item { background: var(--white); border: 1px solid var(--gray-200); border-radius: 10px;
+padding: 16px; }
+.value-item .icon { font-size: 26px; }
+
+/* ROI/Case Study Prompt Style */
+.data-cta {
+  text-align: center;
+  margin-top: 32px;
+  padding: 20px;
+  background: var(--gray-200);
+  border-radius: 10px;
+  border-left: 5px solid var(--orange);
+}
+.data-cta p {
+  margin: 0 0 12px;
+  font-weight: 600;
+  color: var(--gray-700);
+}
+
+/* Industries */
+.grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; } /* Fixed class name */
+.industry {
+background: var(--white); border: 1px solid var(--gray-200);
+border-radius: 10px; padding: 16px; text-align: center;
+}
+/* Pilot */
+.timeline { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 10px; }
+.timeline-step { background: var(--white); border: 1px solid var(--gray-200);
+border-radius:
+10px; padding: 16px; text-align: center; }
+.bubble { font-size: 28px; }
+.bubble.highlight { color: var(--orange); font-weight: 700; }
+
+/* How */
+.how-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.how-item { background: var(--white); border: 1px solid var(--gray-200); border-radius: 10px;
+padding: 16px; }
+
+/* About */
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.values { list-style: none; padding: 0; margin: 14px 0 0; }
+.values li { margin-bottom: 8px; }
+.bio-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: 10px;
+padding: 16px; }
+.bio-card blockquote {
+border-left: 4px solid var(--teal);
+margin: 10px 0 0; padding: 10px 12px; color: var(--gray-700);
+}
+/* FAQ */
+.faq-list details { /* Fixed class name */
+background: var(--white); border: 1px solid var(--gray-200);
+border-radius: 10px; padding: 14px; margin-bottom: 10px;
+}
+.faq-list summary { cursor: pointer; font-weight: 600; }
+/* Contact */
+.contact-form.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.form-group { display: flex; flex-direction: column; gap: 6px; }
+.form-group input, .form-group textarea {
+border: 1px solid var(--gray-200); border-radius: 8px; padding: 10px;
+font-size: 1rem;
+}
+.form-group input:focus, .form-group textarea:focus { outline: 2px solid var(--teal);
+border-color: var(--teal); }
+.error { color: #b00020; min-height: 18px; }
+.form-actions { display: flex; align-items: center; gap: 12px; margin-top: 10px; }
+#formStatus { color: var(--blue); }
+/* Footer */
+.site-footer { border-top: 1px solid var(--gray-200); padding: 20px 0; background: var(--white);
+}
+.footer-inner { display: flex; align-items: center; justify-content: space-between; }
+.footer-link { color: var(--gray-700); text-decoration: none; margin-left: 10px; }
+.footer-link:hover { text-decoration: underline; }
+/* Responsive */
+@media (max-width: 980px) {
+.grid-2, .grid-3, .grid-5, .value-grid, .about-grid, .how-grid, .timeline { grid-template-columns: 1fr; } /* Fixed class names */
+.mockup-body { grid-template-columns: 1fr; }
+.cards { grid-template-columns: 1fr; }
+}
+@media (max-width: 760px) {
+.nav-toggle { display: inline-block; }
+.nav-list {
+position: absolute; right: 0; top: 72px; background: var(--white);
+width: 100%; padding: 10px 16px; border-bottom: 1px solid var(--gray-200);
+display: none; flex-direction: column; gap: 10px;
+}
+.nav-list.open { display: flex; }
+}
+/* Accessibility */
+.sr-only {
+position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden;
+clip: rect(0,0,0,0); border: 0;
+}
+</style>
 </head>
 <body>
-  <!-- Header -->
-  <header class="site-header">
-    <div class="container header-inner">
-      <a href="#hero" class="brand">
-        <!-- Replace with your exported logo.svg/png if available -->
-        <svg class="logo" viewBox="0 0 200 50" xmlns="http://www.w3.org/2000/svg">
-          <text x="0" y="30" font-family="Montserrat" font-size="24" font-weight="700" fill="#1F3C88">SkillSight</text>
-        </svg>
-        <div class="brand-text">
-          <span class="brand-name">SkillSight</span>
-          <span class="brand-tag">Vision for Talent</span>
-        </div>
-      </a>
-      <nav>
-        <ul class="nav-list">
-          <li><a href="#hero">Home</a></li>
-          <li><a href="#problem">Problem</a></li>
-          <li><a href="#solution">Solution</a></li>
-          <li><a href="#value">Value</a></li>
-          <li><a href="#industries">Industries</a></li>
-          <li><a href="#pilot">Pilot</a></li>
-          <li><a href="#how">How It Works</a></li>
-          <li><a href="#contact" class="cta-link">Request Demo</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+<header class="site-header">
+<div class="container header-inner">
+<a href="#hero" class="brand" aria-label="SkillSight home">
+<div class="logo-wrap">
+<svg class="logo-svg" viewBox="0 0 560 72" xmlns="http://www.w3.org/2000/svg"
+role="img" aria-label="SkillSight - Vision for Talent">
+<defs>
+<linearGradient id="ssGrad" x1="0" y1="0" x2="1" y2="0">
+<stop offset="0%" stop-color="#00BFA6"/>
+<stop offset="100%" stop-color="#1F3C88"/>
+</linearGradient>
+</defs>
+<circle
+cx="36" cy="36" r="24" fill="url(#ssGrad)"/>
+<rect x="26" y="26" width="20" height="20" fill="#FFFFFF" opacity="0.92" rx="4"/>
+<text x="72" y="34" font-family="Montserrat, Arial, sans-serif" font-size="28"
+font-weight="700" fill="#1F3C88">SkillSight</text>
+<text x="72" y="58" font-family="Open Sans, Arial, sans-serif" font-size="14"
+font-weight="600" fill="#374151" letter-spacing="1">Vision for Talent</text>
+</svg>
+<span class="logo-tag">See the skills that matter, faster</span>
+</div>
+</a>
 
-  <!-- Hero -->
-  <section id="hero" class="section">
-    <div class="container grid-2">
-      <div>
-        <h1>See the skills that matter, faster.</h1>
-        <p>Cut time‑to‑hire by 50–70% with structured video screening that reveals communication, professionalism, and customer‑service skills before the interview.</p>
-        <a href="#pilot" class="btn btn-primary">Start a Pilot</a>
-        <a href="#how" class="btn btn-secondary">See How It Works</a>
-      </div>
-      <div class="mockup">
-        <div class="mockup-header">Manager Dashboard</div>
-        <div class="mockup-body">
-          <p>Candidate videos + resumes side‑by‑side for faster, fairer screening.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+<nav class="nav" aria-label="Primary">
+<button class="nav-toggle" aria-expanded="false" aria-controls="navMenu">
+<span class="sr-only">Toggle navigation</span> =
+</button>
+<ul id="navMenu" class="nav-list">
+<li><a href="#hero">Home</a></li>
+<li><a href="#problem">Problem</a></li>
+<li><a href="#solution">Solution</a></li>
+<li><a href="#value">Value</a></li>
+<li><a href="#industries">Industries</a></li>
+<li><a href="#pilot">Pilot</a></li>
+<li><a href="#how">How it works</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#faq">FAQ</a></li>
+<li><a href="#contact" class="cta-link">
+Request a demo</a></li> </ul>
+</nav>
+</div>
+</header>
+<section id="hero" class="section hero">
+<div class="container grid-2">
+<div class="hero-copy">
+<h1>See the skills that matter, faster.</h1>
+<p class="lead">
+Cut time-to-hire by 50-70% with structured video screening that reveals communication,
+professionalism, and customer-service skills before the interview. **Consolidate your HR Tech stack.** </p>
+<div class="hero-actions">
+<a href="#pilot" class="btn btn-primary">Start a Pilot</a>
+<a href="#how" class="btn btn-secondary">See How It Works</a>
+</div>
+<ul class="proof-points">
+<li><strong>Faster:</strong> 50-70% reduction in screening time</li>
+<li><strong>Fairer:</strong> Standardized STAR questions</li>
+<li><strong>Smarter:</strong> Better shortlists, soft skills visible upfront</li>
+</ul>
+</div>
+<div class="hero-visual">
+<div class="mockup" aria-hidden="true">
+<div class="mockup-header">
+<span class="dot red"></span><span class="dot yellow"></span><span class="dot
+green"></span>
+<span class="title">Manager Dashboard</span>
+</div>
+<div class="mockup-body">
+<aside class="filters">
+<h4>ATS Filter</h4>
+<label><input type="checkbox" checked /> Certs met</label>
+<label><input type="checkbox" checked /> Experience ≥ 2 yrs</label>
+<label><input type="checkbox" /> Keyword: "customer service"</label>
+<button class="btn btn-mini">Apply</button>
+</aside>
+<main class="cards">
+<article class="card">
+<div class="thumb" aria-label="Video thumbnail">Video Preview</div> <h5>Alex J. (8/10 Score)</h5> <p>STAR responses: 6 Comm: Strong Energy: High</p>
+<button class="btn btn-mini">Review</button>
+</article>
+<article class="card">
+<div class="thumb">Video Preview</div> <h5>Maya R. (7/10 Score)</h5> <p>STAR responses: 5 Comm: Clear Professional</p>
+<button class="btn btn-mini">Review</button>
+</article>
+<article class="card">
+<div class="thumb">Video Preview</div> <h5>Sam K. (9/10 Score)</h5> <p>STAR responses: 7 Comm: Excellent Empathy: High</p>
+<button class="btn btn-mini">Review</button>
+</article>
+</main>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="problem" class="section">
+<div class="container">
+<h2>The first interview is broken.</h2>
+<div class="grid-3 features">
+<div class="feature">
+<div class="icon"></div>
+<h3>Slow phone screens</h3>
+<p>Scheduling delays and repetitive calls waste time and cause top talent to drop
+out.</p>
+</div>
+<div class="feature">
+<div class="icon"></div>
+<h3>Soft skills invisible</h3>
+<p>Resumes and quizzes don't reveal communication, professionalism, or service
+mindset.</p>
+</div>
+<div class="feature">
+<div class="icon"></div>
+<h3>Inconsistent evaluation</h3>
+<p>Different questions and styles lead to subjective, bias-prone first-round
+assessments.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="solution" class="section alt">
+<div class="container">
+<h2>The SkillSight advantage</h2>
+<div class="steps">
+<div class="step">
+<div class="step-icon"></div>
+<h3>ATS Filter</h3>
+<p>Instantly screen for hard requirements - certifications, experience, and role
+keywords.</p>
+</div>
+<div class="connector"></div>
+<div class="step">
+<div class="step-icon"></div>
+<h3>Structured video interview</h3>
+<p>Candidates answer 5-7 standardized STAR questions on their own time.</p>
+</div>
+<div class="connector"></div>
+<div class="step">
+<div class="step-icon"></div>
+<h3>Manager dashboard</h3>
+<p>Review 50 candidates in the time it takes for 5 phone calls. Faster, fairer
+shortlists.</p>
+</div>
+</div>
+<div class="cta-inline">
+<a href="#how" class="btn btn-secondary">Learn more</a>
+</div>
+</div>
+</section>
+<section id="value" class="section">
+<div class="container">
+<h2>Why SkillSight works</h2>
+<div class="value-grid">
+<div class="value-item">
+<div class="icon"> </div>
+<h3>50-70% faster</h3>
+<p>Cut time-to-hire with on-demand video screening and manager batch review.</p>
+</div>
+<div class="value-item">
+<div class="icon"></div>
+<h3>Better shortlists</h3>
+<p>See communication and service skills upfront not after three rounds.</p>
+</div>
+<div class="value-item">
+<div class="icon"></div>
+<h3>Fair & consistent</h3>
+<p>Standardized STAR questions reduce bias and improve brand perception.</p>
+</div>
+<div class="value-item">
+<div class="icon"></div>
+<h3>Tech Consolidation</h3> <p>Integrates with your ATS, replacing the cost and complexity of external video tools.</p> </div>
+</div>
 
-  <!-- Problem -->
-  <section id="problem" class="section alt">
-    <div class="container grid-3">
-      <div><h3>⏱ Slow phone screens</h3><p>Scheduling delays and repetitive calls waste time.</p></div>
-      <div><h3>🧩 Soft skills invisible</h3><p>Resumes don’t reveal communication or service mindset.</p></div>
-      <div><h3>⚖️ Inconsistent evaluation</h3><p>Different questions lead to bias‑prone assessments.</p></div>
-    </div>
-  </section>
+<div class="data-cta">
+    <p>Ready for the hard data?</p>
+    <a href="#contact" class="btn btn-primary">Request ROI Calculator & Case Studies</a>
+</div>
+</div>
+</section>
+<section id="industries" class="section alt">
+<div class="container">
+<h2>Built for high-volume, customer-facing hiring</h2>
+<div class="grid-5 industries-grid">
+<div class="industry">
+<div class="icon"></div>
+<h3>Retail & Grocery</h3>
+<p>Cashier, associate, stock roles hire for service and reliability.</p> </div>
+<div class="industry">
+<div class="icon"></div>
+<h3>Healthcare & Pharmacy</h3>
+<p>Pharmacy techs and patient-facing staff hire for empathy and clarity.</p>
+</div>
+<div class="industry">
+<div class="icon"> </div>
+<h3>Hospitality & Food Service</h3>
+<p>Front desk and service roles hire for warmth and professionalism.</p> </div>
+<div class="industry">
+<div class="icon">
+</div>
+<h3>Call Centers</h3> <p>Agents and support hire for tone, clarity, and problem-solving.</p>
+</div>
+<div class="industry">
+<div class="icon"></div>
+<h3>Logistics & Delivery</h3>
+<p>Warehouse and drivers hire for reliability and teamwork.</p> </div>
+</div>
+</div>
+</section>
+<section id="pilot" class="section">
+<div class="container">
+<h2>Prove it in 6 weeks</h2>
+<div class="timeline">
+<div class="timeline-step">
+<div class="bubble"> </div>
+<h3>Scope</h3>
+<p>5-10 locations in a high-volume role.</p> </div>
+<div class="timeline-step">
+<div class="bubble"></div>
+<h3>Duration</h3>
+<p>6-8 weeks with weekly check-ins.</p>
+</div>
+<div class="timeline-step">
+<div class="bubble highlight"></div>
+<h3>Metrics</h3>
+<p><strong>50% faster time-to-screen</strong>, manager satisfaction, candidate
+completion rate.</p>
+</div>
+</div>
+<div class="cta-inline">
+<a href="#contact" class="btn btn-primary">Start a Pilot</a>
+</div>
+</div>
+</section>
+<section id="how" class="section alt">
+<div class="container">
+<h2>Hiring, re-engineered in three steps</h2>
+<div class="how-grid">
+<div class="how-item">
+<h3>For Candidates</h3>
+<p>Apply through the ATS. If qualified, **record 5–7 job-specific STAR answers on your own time.** No scheduling hassle, just a chance to show your best self.</p> </div>
+<div class="how-item">
+<h3>For Employers</h3>
+<p>Qualified applicants move to structured video. **Managers review quickly with side-by-side resume and video**, creating the highest quality shortlists for final interviews.</p> </div>
+</div>
+<div class="cta-inline">
+<a href="#faq" class="btn btn-secondary">Get answers</a>
+</div>
+</div>
+</section>
+<section id="about" class="section">
+<div class="container about-grid"> <div class="about-copy">
+<h2>Our Vision: Clarity and Fairness</h2>
+<p>SkillSight was founded to fix the broken first interview, focusing on eliminating bias and maximizing recruiter efficiency. Our principles guide everything we build:</p>
+<ul class="values">
+<li><strong>Fairness:</strong> Equal opportunity for every candidate to shine.</li>
+<li><strong>Efficiency:</strong> Time saved for recruiters and managers.</li>
+<li><strong>Clarity:</strong> Soft skills made visible from step one.</li>
+<li><strong>Scalability:</strong> Built for modern hiring velocity.</li>
+</ul>
+</div>
 
-  <!-- Solution -->
-  <section id="solution" class="section">
-    <div class="container grid-3">
-      <div><h3>🔎 ATS Filter</h3><p>Instantly screen for hard requirements.</p></div>
-      <div><h3>🎥 Structured Video</h3><p>Candidates answer standardized STAR questions.</p></div>
-      <div><h3>📊 Dashboard</h3><p>Review 50 candidates in the time of 5 calls.</p></div>
-    </div>
-  </section>
+<div class="bio-card">
+<h3>Founder: Chandra M. Harris</h3>
+<p>
+Certified Insurance and Coding Specialist (CICS), Certified Medical Office Assistant
+(CMOA), and Certified Pharmacy Technician (CPhT). Builder of interactive learning modules,
+printable workbooks, and executive pitch decks — focused on clarity, consistency, and
+measurable outcomes.
+</p>
+<blockquote>
+“Everyone deserves a fair chance to show their skills — and every company deserves a
+faster, smarter way to find the right people.”
+</blockquote>
+</div>
+</div>
+</section>
 
-  <!-- Value -->
-  <section id="value" class="section alt">
-    <div class="container grid-4">
-      <div><h3>🚀 Faster</h3><p>50–70% reduction in screening time.</p></div>
-      <div><h3>👥 Better</h3><p>Soft skills visible upfront.</p></div>
-      <div><h3>⚖️ Fairer</h3><p>Standardized STAR questions reduce bias.</p></div>
-      <div><h3>📈 Scalable</h3><p>Handle seasonal peaks without extra staff.</p></div>
-    </div>
-  </section>
+<section id="faq" class="section alt">
+<div class="container">
+<h2>Common Questions</h2>
+<div class="faq-list">
+<details>
+<summary>Will this slow down candidates?</summary>
+<p>It speeds things up. No scheduling delays, faster feedback, and reduced drop-off.</p>
+</details>
 
-  <!-- Industries -->
-  <section id="industries" class="section">
-    <div class="container grid-4">
-      <div><h3>🛍️ Retail</h3><p>Hire for service and reliability.</p></div>
-      <div><h3>🏥 Healthcare</h3><p>Hire for empathy and clarity.</p></div>
-      <div><h3>🏨 Hospitality</h3><p>Hire for warmth and professionalism.</p></div>
-      <div><h3>📞 Call Centers</h3><p>Hire for tone and problem‑solving.</p></div>
-    </div>
-  </section>
+<details>
+<summary>How much time does this save managers?</summary>
+<p>Managers can review ~50 video responses in the time required for ~5 phone screens
+— a 50–70% time-to-hire reduction.</p>
+</details>
 
-  <!-- Pilot -->
-  <section id="pilot" class="section alt">
-    <div class="container">
-      <h2>Prove it in 6 weeks</h2>
-      <p>Run a pilot in 5–10 locations, measure ROI, and scale.</p>
-    </div>
-  </section>
+<details>
+<summary>What roles is this best for?</summary>
+<p>Retail associates, pharmacy techs, call center agents, hospitality staff,
+logistics/seasonal hires — anywhere soft skills are critical.</p>
+</details>
 
-  <!-- How It Works -->
-  <section id="how" class="section">
-    <div class="container grid-2">
-      <div><h3>For
+<details>
+<summary>How do we measure success?</summary>
+<p>Start with a 6–8 week pilot. Measure time-to-screen, manager satisfaction, candidate
+completion, and quality of finalists.</p>
+</details>
+
+<details>
+<summary>Is it scalable?</summary>
+<p>Yes. Built to handle seasonal peaks and high volume hiring without stress.</p> </details>
+</div>
+</div>
+</section>
+
+<section id="contact" class="section">
+<div class="container">
+<h2>Request a Demo</h2>
+<form id="contactForm" class="contact-form grid-2" action="submit_demo" method="POST">
+<div class="form-group">
+<label for="name">Name*</label>
+<input id="name" name="name" type="text" required placeholder="Jane Doe" />
+<small class="error"></small>
+</div>
+<div class="form-group">
+<label for="company">Company*</label>
+<input id="company" name="company" type="text" required placeholder="Acme Corp" />
+<small class="error"></small>
+</div>
+<div class="form-group">
+<label for="email">Email*</label>
+<input id="email" name="email" type="email" required placeholder="jane@acme.com" />
+<small class="error"></small>
+</div>
+<div class="form-group">
+<label for="role">Role</label>
+<input id="role" name="role" type="text" placeholder="Director of TA" />
+<small class="error"></small>
+</div>
+<div class="form-group">
+<label for="message">Message*</label>
+<textarea id="message" name="message" rows="5" required placeholder="Tell us about
+your hiring goals..."></textarea>
+<small class="error"></small>
+</div>
+<div class="form-actions">
+<button type="submit" class="btn btn-primary">Request a Demo</button>
+<span id="formStatus" role="status" aria-live="polite"></span>
+</div>
+</form>
+</div>
+</section>
+
+<footer class="site-footer">
+<div class="container footer-inner">
+<p>&copy; <span id="year">2025</span> SkillSight. All rights reserved.</p>
+<div>
+<a href="#about" class="footer-link">About</a>
+<a href="#faq" class="footer-link">FAQ</a>
+</div>
+</div>
+</footer>
+
+<script>
+// JavaScript for functionality (mostly untouched from original)
+
+// Mobile menu toggle
+const navToggle = document.querySelector('.nav-toggle');
+const navMenu = document.getElementById('navMenu');
+
+if (navToggle) {
+navToggle.addEventListener('click', () => {
+const isExpanded = navToggle.getAttribute('aria-expanded') === 'true' || false;
+navToggle.setAttribute('aria-expanded', !isExpanded);
+navMenu.classList.toggle('open');
+});
+}
+
+// Close mobile menu on link click
+document.querySelectorAll('#navMenu a').forEach(link => {
+link.addEventListener('click', () => {
+navMenu.classList.remove('open');
+navToggle && navToggle.setAttribute('aria-expanded', 'false');
+});
+});
+
+// Year in footer
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// Contact form validation + demo submission (basic structure retained)
+const form = document.getElementById('contactForm');
+const statusEl = document.getElementById('formStatus');
+
+function setError(input, message) {
+const group = input.closest('.form-group');
+const err = group.querySelector('.error');
+err.textContent = message || '';
+input.setAttribute('aria-invalid', message ? 'true' : 'false');
+}
+
+function validateEmail(email) {
+return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+if (form) {
+form.addEventListener('submit', function (e) {
+e.preventDefault();
+statusEl.textContent = 'Submitting...';
+
+// Basic validation example
+let isValid = true;
+const nameInput = document.getElementById('name');
+const emailInput = document.getElementById('email');
+const messageInput = document.getElementById('message');
+
+if (!nameInput.value.trim()) { setError(nameInput, 'Name is required.'); isValid = false; } else { setError(nameInput, ''); }
+if (!emailInput.value.trim() || !validateEmail(emailInput.value)) { setError(emailInput, 'Enter a valid email.'); isValid = false; } else { setError(emailInput, ''); }
+if (!messageInput.value.trim()) { setError(messageInput, 'Message is required.'); isValid = false; } else { setError(messageInput, ''); }
+
+if (isValid) {
+// Mock success for demo purposes
+setTimeout(() => {
+statusEl.textContent = 'Success! We\'ll be in touch soon.';
+form.reset();
+}, 1500);
+
+// In a real application, you would send this data to a server
+} else {
+statusEl.textContent = 'Please correct the errors above.';
+}
+});
+}
+</script>
+</body>
+</html>
