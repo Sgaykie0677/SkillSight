@@ -21,7 +21,11 @@
     /* Header */
     .site-header{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--gray-200);z-index:999;}
     .header-inner{display:flex;justify-content:space-between;align-items:center;height:72px;}
-    .brand{font-weight:700;font-size:1.2rem;color:var(--blue);text-decoration:none;}
+    .brand{display:flex;align-items:center;gap:10px;text-decoration:none;}
+    .logo{height:40px;width:auto;}
+    .brand-text{display:flex;flex-direction:column;line-height:1;}
+    .brand-name{font-weight:700;font-size:1.2rem;color:var(--blue);}
+    .brand-tag{font-size:0.75rem;color:var(--gray-700);}
     .nav-list{list-style:none;display:flex;gap:18px;margin:0;padding:0;}
     .nav-list a{text-decoration:none;color:var(--gray-900);padding:8px 10px;border-radius:6px;}
     .nav-list a:hover{background:var(--gray-100);}
@@ -30,6 +34,10 @@
     .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:32px;}
     .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
     .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+    /* Hero mockup */
+    .mockup{border:1px solid var(--gray-200);border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 8px 20px rgba(31,60,136,.08);}
+    .mockup-header{background:var(--blue);color:#fff;padding:10px 14px;font-weight:600;}
+    .mockup-body{padding:20px;}
     /* Case Studies */
     .case-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
     .case{background:#fff;border:1px solid var(--gray-200);border-radius:10px;padding:20px;}
@@ -46,7 +54,16 @@
   <!-- Header -->
   <header class="site-header">
     <div class="container header-inner">
-      <a href="#hero" class="brand">SkillSight</a>
+      <a href="#hero" class="brand">
+        <!-- Replace inline SVG with <img src="assets/logo.svg" class="logo" alt="SkillSight logo"> if you have a file -->
+        <svg class="logo" viewBox="0 0 200 50" xmlns="http://www.w3.org/2000/svg">
+          <text x="0" y="30" font-family="Montserrat" font-size="24" font-weight="700" fill="#1F3C88">SkillSight</text>
+        </svg>
+        <div class="brand-text">
+          <span class="brand-name">SkillSight</span>
+          <span class="brand-tag">Vision for Talent</span>
+        </div>
+      </a>
       <nav>
         <ul class="nav-list">
           <li><a href="#hero">Home</a></li>
@@ -71,12 +88,12 @@
         <h1>See the skills that matter, faster.</h1>
         <p>Cut time‑to‑hire by 50–70% with structured video screening that reveals communication, professionalism, and customer‑service skills before the interview.</p>
         <a href="#pilot" class="btn btn-primary">Start a Pilot</a>
+        <a href="#how" class="btn btn-secondary">See How It Works</a>
       </div>
-      <div>
-        <!-- Placeholder for dashboard mockup -->
-        <div style="background:#fff;border:1px solid var(--gray-200);border-radius:10px;padding:20px;box-shadow:0 8px 20px rgba(31,60,136,.08);">
-          <h3 style="margin:0;color:var(--blue);">Manager Dashboard</h3>
-          <p>Review candidate videos side‑by‑side with resumes.</p>
+      <div class="mockup">
+        <div class="mockup-header">Manager Dashboard</div>
+        <div class="mockup-body">
+          <p>Candidate videos + resumes side‑by‑side for faster, fairer screening.</p>
         </div>
       </div>
     </div>
@@ -106,35 +123,4 @@
       <div><h3>🚀 Faster</h3><p>50–70% reduction in screening time.</p></div>
       <div><h3>👥 Better</h3><p>Soft skills visible upfront.</p></div>
       <div><h3>⚖️ Fairer</h3><p>Standardized STAR questions reduce bias.</p></div>
-      <div><h3>📈 Scalable</h3><p>Handle seasonal peaks without extra staff.</p></div>
-    </div>
-  </section>
-
-  <!-- Industries -->
-  <section id="industries" class="section">
-    <div class="container grid-4">
-      <div><h3>🛍️ Retail</h3><p>Hire for service and reliability.</p></div>
-      <div><h3>🏥 Healthcare</h3><p>Hire for empathy and clarity.</p></div>
-      <div><h3>🏨 Hospitality</h3><p>Hire for warmth and professionalism.</p></div>
-      <div><h3>📞 Call Centers</h3><p>Hire for tone and problem‑solving.</p></div>
-    </div>
-  </section>
-
-  <!-- Pilot -->
-  <section id="pilot" class="section alt">
-    <div class="container">
-      <h2>Prove it in 6 weeks</h2>
-      <p>Run a pilot in 5–10 locations, measure ROI, and scale.</p>
-    </div>
-  </section>
-
-  <!-- How It Works -->
-  <section id="how" class="section">
-    <div class="container grid-2">
-      <div><h3>For Candidates</h3><p>Record STAR responses on your own time.</p></div>
-      <div><h3>For Employers</h3><p>Managers review quickly with side‑by‑side video and resume.</p></div>
-    </div>
-  </section>
-
-  <!-- Case Studies -->
- 
+      <div><h3>📈 Scalable
