@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Smart Match - SkillSight</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --blue: #1F3C88;
+  --teal: #00BFA6;
+  --orange: #FF6B35;
+  --gray-100: #F5F6FA;
+  --gray-200: #ECEFF4;
+  --gray-400: #9CA3AF;
+  --gray-700: #374151;
+  --gray-900: #111827;
+  --white: #FFFFFF;
+  --amber: #F2A623;
+  --red: #D6483C;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: "Open Sans", system-ui, sans-serif;
+  color: var(--gray-900);
+  background: var(--white);
+  line-height: 1.6;
+}
+h1, h2, h3 { font-family: "Montserrat", sans-serif; margin: 0 0 0.5rem; color: var(--blue); }
+.container { width: min(1000px, 92%); margin: 0 auto; }
+.section { padding: 40px 0; }
+.lead { color: var(--gray-700); }
+
+.site-header {
+  background: var(--white); border-bottom: 1px solid var(--gray-200);
+  padding: 16px 0;
+}
+.site-header .container { display: flex; align-items: center; justify-content: space-between; }
+.brand { color: var(--blue); font-weight: 700; text-decoration: none; font-family: "Montserrat", sans-serif; }
+.back-link { color: var(--gray-700); text-decoration: none; font-size: 0.9rem; }
+
+.tabs { display: flex; gap: 8px; margin: 20px 0; border-bottom: 1px solid var(--gray-200); }
+.tab-btn {
+  background: none; border: none; padding: 10px 16px; font-weight: 600;
+  cursor: pointer; color: var(--gray-700); border-bottom: 2px solid transparent;
+  font-family: "Open Sans", sans-serif; font-size: 0.95rem;
+}
+.tab-btn.active { color: var(--blue); border-bottom-color: var(--teal); }
+
+.panel { display: none; }
+.panel.active { display: block; }
+
+.card {
+  border: 1px solid var(--gray-200); border-radius: 10px; padding: 20px;
+  background: var(--white); margin-bottom: 16px;
+}
+
+label { display: block; font-weight: 600; margin: 14px 0 6px; color: var(--gray-900); font-size: 0.9rem; }
+select, textarea {
+  width: 100%; padding: 10px 12px; border: 1px solid var(--gray-200);
+  border-radius: 8px; font-family: "Open Sans", sans-serif; font-size: 0.95rem;
+}
+textarea { min-height: 160px; resize: vertical; }
+
+.btn {
+  display: inline-block; padding: 12px 20px; border-radius: 8px; border: none;
+  text-decoration: none; font-weight: 600; cursor: pointer; font-size: 0.95rem;
+  font-family: "Open Sans", sans-serif; margin-top: 16px;
+}
+.btn-primary { background: var(--orange); color: var(--white); }
+.btn-secondary { background: var(--teal); color: var(--white); }
+.btn:disabled { opacity: 0.5; cursor: default; }
+
+.disclosure {
+  background: var(--gray-100); border-radius: 8px; padding: 12px 16px;
+  font-size: 0.85rem; color: var(--gray-700); margin-top: 16px;
+}
+.disclosure a { color: var(--blue); }
+
+.demo-banner {
+  background: #FFF3E0; border: 1px solid var(--orange); border-radius: 8px;
+  padding: 10px 14px; font-size: 0.85rem; color: var(--gray-900); margin-bottom: 16px;
+}
+
+.result-card { border-left: 4px solid var(--teal); }
+.result-card.flagged { border-left-color: var(--amber); }
+
+.score-badge {
+  display: inline-block; padding: 4px 12px; border-radius: 20px;
+  font-weight: 700; font-size: 0.9rem; color: var(--white);
+}
+.score-high { background: var(--teal); }
+.score-mid { background: var(--amber); }
+.score-low { background: var(--red); }
+
+.candidate-row {
+  border: 1px solid var(--gray-200); border-radius: 10px; padding: 16px;
+  margin-bottom: 12px; display: flex; gap: 16px; align-items: flex-start;
+}
+.candidate-row .details { flex: 1; }
+.candidate-row .meta { font-size: 0.85rem; color: var(--gray-700); margin-top: 6px; }
+.flag-pill {
+  display: inline-block; background: #FFF3E0; color: #8A5A00;
+  font-size: 0.75rem; font-weight: 600; padding: 2px 8px; border-radius: 12px;
+  margin-left: 8px;
+}
+.advisory-note { font-size: 0.85rem; color: var(--gray-700); margin-top: 20px; }
+.empty-state { color: var(--gray-400); font-style: italic; padding: 20px 0; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="index.html">SkillSight</a>
+    <a class="back-link" href="index.html">&larr; Back to home</a>
+  </div>
+</header>
+
+<main class="container section">
+  <h1>Smart match</h1>
+  <p class="lead">AI-assisted fit scoring layered on top of your ATS filter, so managers see a ranked, explained shortlist instead of a pass/fail list.</p>
+
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="apply">Candidate apply</button>
+    <button class="tab-btn" data-tab="dashboard">Manager dashboard</button>
+  </div>
+
+  <div class="panel active" id="panel-apply">
+    <div class="card">
+      <label for="jobSelect">Role</label>
+      <select id="jobSelect"></select>
+
+      <label for="resumeInput">Resume</label>
+      <textarea id="resumeInput" placeholder="Paste resume text here..."></textarea>
+
+      <button class="btn btn-primary" id="submitBtn">Submit application</button>
+
+      <div class="disclosure">
+        This role uses AI-assisted resume scoring to help our hiring team prioritize applications. A person makes every final decision. You can <a href="#" id="manualReviewLink">request manual review</a> instead.
+      </div>
+    </div>
+    <div id="applyResult"></div>
+  </div>
+
+  <div class="panel" id="panel-dashboard">
+    <div class="card">
+      <label for="dashJobSelect">Role</label>
+      <select id="dashJobSelect"></select>
+    </div>
+    <div id="dashboardList"></div>
+    <p class="advisory-note">Fit scores are advisory only. Every candidate remains visible regardless of score, and a person makes the final hiring decision.</p>
+  </div>
+</main>
+
+<script>
+// Set this to your Cloudflare Worker URL (see smart-match-worker.js) to enable real AI scoring.
+// Left blank, the page runs in local demo mode using a simple keyword-overlap estimate.
+const CONFIG = {
+  API_ENDPOINT: ""
+};
+
+const JOBS = [
+  {
+    id: "retail-associate",
+    title: "Retail associate",
+    duties: "Assist customers, operate register, restock shelves, maintain store presentation.",
+    soft_requirements: "Customer service experience, reliability, communication skills"
+  },
+  {
+    id: "pharmacy-tech",
+    title: "Pharmacy technician",
+    duties: "Process prescriptions, verify insurance, assist pharmacist, handle patient questions with empathy and clarity.",
+    soft_requirements: "Pharmacy tech certification, PBM or insurance experience, clear communication"
+  },
+  {
+    id: "hospitality-frontdesk",
+    title: "Front desk associate",
+    duties: "Greet guests, manage check-in/out, resolve guest concerns, coordinate with housekeeping.",
+    soft_requirements: "Hospitality experience, warmth, professionalism under pressure"
+  },
+  {
+    id: "call-center-agent",
+    title: "Call center agent",
+    duties: "Handle inbound calls, resolve issues, document interactions, meet quality standards.",
+    soft_requirements: "Call center or phone-based customer service, clear tone, problem-solving"
+  }
+];
+
+function populateJobSelects() {
+  const opts = JOBS.map(j => `<option value="${j.id}">${j.title}</option>`).join("");
+  document.getElementById("jobSelect").innerHTML = opts;
+  document.getElementById("dashJobSelect").innerHTML = opts;
+}
+populateJobSelects();
+
+document.querySelectorAll(".tab-btn").forEach(btn => {
+  btn.onclick = () => {
+    document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+    document.querySelectorAll(".panel").forEach(p => p.classList.remove("active"));
+    btn.classList.add("active");
+    document.getElementById(`panel-${btn.dataset.tab}`).classList.add("active");
+    if (btn.dataset.tab === "dashboard") renderDashboard();
+  };
+});
+
+function storageKey(jobId) {
+  return `smartmatch_applications_${jobId}`;
+}
+
+function loadApplications(jobId) {
+  try {
+    return JSON.parse(localStorage.getItem(storageKey(jobId)) || "[]");
+  } catch (e) {
+    return [];
+  }
+}
+
+function saveApplication(jobId, application) {
+  const apps = loadApplications(jobId);
+  apps.push(application);
+  localStorage.setItem(storageKey(jobId), JSON.stringify(apps));
+}
+
+function tierFor(score) {
+  if (score >= 70) return "high";
+  if (score >= 45) return "mid";
+  return "low";
+}
+
+async function scoreResume(resume, job) {
+  if (CONFIG.API_ENDPOINT) {
+    const response = await fetch(CONFIG.API_ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        resume,
+        job_title: job.title,
+        duties: job.duties,
+        soft_requirements: job.soft_requirements
+      })
+    });
+    if (!response.ok) throw new Error(`Scoring service returned ${response.status}`);
+    return await response.json();
+  }
+
+  // Local demo-mode fallback: naive keyword overlap, not real AI scoring.
+  const keywords = job.soft_requirements.toLowerCase().split(/[,\s]+/).filter(w => w.length > 3);
+  const resumeLower = resume.toLowerCase();
+  const hits = keywords.filter(k => resumeLower.includes(k));
+  const score = Math.min(95, Math.round((hits.length / Math.max(keywords.length, 1)) * 100));
+  return {
+    match_score: score,
+    why_match: hits.length ? `Resume mentions: ${hits.slice(0, 3).join(", ")}` : "Limited keyword overlap found",
+    why_not: hits.length < keywords.length ? "Some listed requirements not found in resume text" : "No major gaps found",
+    flagged_for_review: score >= 40 && score <= 60
+  };
+}
+
+document.getElementById("submitBtn").onclick = async () => {
+  const jobId = document.getElementById("jobSelect").value;
+  const job = JOBS.find(j => j.id === jobId);
+  const resume = document.getElementById("resumeInput").value.trim();
+  const resultDiv = document.getElementById("applyResult");
+  resultDiv.innerHTML = "";
+
+  if (!resume) {
+    resultDiv.innerHTML = `<div class="card"><span style="color:var(--red)">Paste a resume before submitting.</span></div>`;
+    return;
+  }
+
+  const btn = document.getElementById("submitBtn");
+  btn.disabled = true;
+  btn.textContent = "Scoring...";
+
+  try {
+    const demoNotice = CONFIG.API_ENDPOINT ? "" :
+      `<div class="demo-banner">Demo mode: no scoring backend configured, showing a simple keyword-overlap estimate. Connect smart-match-worker.js for real AI scoring.</div>`;
+
+    const result = await scoreResume(resume, job);
+    const application = {
+      id: "app_" + Date.now(),
+      resumeExcerpt: resume.slice(0, 160),
+      ...result,
+      manualReviewRequested: false,
+      submittedAt: new Date().toISOString()
+    };
+    saveApplication(jobId, application);
+
+    resultDiv.innerHTML = `
+      ${demoNotice}
+      <div class="card result-card ${result.flagged_for_review ? "flagged" : ""}">
+        <span class="score-badge score-${tierFor(result.match_score)}">${result.match_score}% fit</span>
+        <p style="margin-top:12px"><strong>Why it fits:</strong> ${result.why_match}</p>
+        <p><strong>Possible gap:</strong> ${result.why_not}</p>
+        <p style="font-size:0.85rem;color:var(--gray-700)">Your application has been recorded for the ${job.title} role. This score helps our team prioritize review, it does not decide your outcome.</p>
+      </div>
+    `;
+  } catch (err) {
+    resultDiv.innerHTML = `<div class="card"><span style="color:var(--red)">Scoring failed: ${err.message}</span></div>`;
+  } finally {
+    btn.disabled = false;
+    btn.textContent = "Submit application";
+  }
+};
+
+document.getElementById("manualReviewLink").onclick = (e) => {
+  e.preventDefault();
+  alert("Your request for manual review has been noted. A team member will review your application directly.");
+};
+
+function renderDashboard() {
+  const jobId = document.getElementById("dashJobSelect").value;
+  const job = JOBS.find(j => j.id === jobId);
+  const apps = loadApplications(jobId).sort((a, b) => b.match_score - a.match_score);
+  const listDiv = document.getElementById("dashboardList");
+
+  if (!apps.length) {
+    listDiv.innerHTML = `<div class="empty-state">No applications yet for ${job.title}.</div>`;
+    return;
+  }
+
+  listDiv.innerHTML = apps.map(a => `
+    <div class="candidate-row">
+      <span class="score-badge score-${tierFor(a.match_score)}">${a.match_score}%</span>
+      <div class="details">
+        <div>${a.resumeExcerpt}...${a.flagged_for_review ? '<span class="flag-pill">Flag for review</span>' : ""}</div>
+        <div class="meta"><strong>Fit:</strong> ${a.why_match}</div>
+        <div class="meta"><strong>Gap:</strong> ${a.why_not}</div>
+      </div>
+    </div>
+  `).join("");
+}
+
+document.getElementById("dashJobSelect").onchange = renderDashboard;
+</script>
+
+</body>
+</html>
